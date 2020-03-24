@@ -26,7 +26,7 @@ def guardar():
         Mot4 = pd.Series(Motor4,name='i5')
 
         m =pd.concat([Tiempo,In,Mot1,Mot2,Mot3,Mot4],axis=1)
-        m.to_csv('datos_identificacion9_suelo_adelante_V10.8.txt',header=True,index=False)
+        m.to_csv('datos_1_suelo_adelante_1060.txt',header=True,index=False)
         print('termino')
 
 if __name__ == "__main__":
@@ -39,12 +39,13 @@ if __name__ == "__main__":
         ser.port = '/dev/ttyACM0'
         ser.open()
         time.sleep(2)
-        ser.write(('b').encode('cp1250'))
+        #ser.write(('b').encode('cp1250'))
         ser.write(('a').encode('cp1250'))
         
         while 1:
                 ser.flush()
                 datos=ser.readline()
+                print(datos)
                 if (datos.decode('cp1250').replace('\n','')=='B'):
                         guardar()
                         ser.close()
@@ -52,7 +53,7 @@ if __name__ == "__main__":
                 elif(datos.decode('cp1250').replace('\n','')=='C'):
                         time.sleep(2)
                         ser.write(('d').encode('cp1250'))
-                        input(“ Pulse cualquier tecla para continuar “)
+                        input(' Pulse cualquier tecla para continuar ')
                         ser.write(('c').encode('cp1250'))
                 else:
                         datosID.append(datos.decode('cp1250').replace('\n',''))

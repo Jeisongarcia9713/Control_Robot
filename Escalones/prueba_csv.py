@@ -4,9 +4,9 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 
-datos=pd.read_csv('datos_identificacion6_suelo_reversa_V10.9.txt',header=0)
+datos=pd.read_csv('datos_3_suelo_adelante_1060.txt',header=0)
 tiempo=datos['t']
-entrada=datos['i2']
+entrada=datos['i4']
 
 fig, ax = plt.subplots()
 ax.plot(tiempo, entrada)
