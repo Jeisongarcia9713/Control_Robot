@@ -26,7 +26,7 @@ def guardar():
         Mot4 = pd.Series(Motor4,name='i5')
 
         m =pd.concat([Tiempo,In,Mot1,Mot2,Mot3,Mot4],axis=1)
-        #m.to_csv('datos_identificacion4_reversa_V1045.txt',header=True,index=False)
+        m.to_csv('datos_identificacion9_suelo_adelante_V10.8.txt',header=True,index=False)
         print('termino')
 
 if __name__ == "__main__":
@@ -36,10 +36,10 @@ if __name__ == "__main__":
         times=0
         ser = serial.Serial()
         ser.baudrate = 115200
-        ser.port = 'com30'
+        ser.port = '/dev/ttyACM0'
         ser.open()
         time.sleep(2)
-        #ser.write(('b').encode('cp1250'))
+        ser.write(('b').encode('cp1250'))
         ser.write(('a').encode('cp1250'))
         
         while 1:
