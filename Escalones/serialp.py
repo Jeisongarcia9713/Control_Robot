@@ -49,6 +49,11 @@ if __name__ == "__main__":
                         guardar()
                         ser.close()
                         break
+                elif(datos.decode('cp1250').replace('\n','')=='C'):
+                        time.sleep(2)
+                        ser.write(('d').encode('cp1250'))
+                        input(“ Pulse cualquier tecla para continuar “)
+                        ser.write(('c').encode('cp1250'))
                 else:
                         datosID.append(datos.decode('cp1250').replace('\n',''))
                         tiempo.append(times)
