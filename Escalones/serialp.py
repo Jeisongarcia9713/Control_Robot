@@ -11,6 +11,7 @@ def guardar():
         Motor2=[]
         Motor3=[]
         Motor4=[]
+        Error1=[]
         for i in datosID:
                 resultados=i.split(",")
                 #print(resultados)
@@ -19,13 +20,15 @@ def guardar():
                 Motor2.append(resultados[2])
                 Motor3.append(resultados[3])
                 Motor4.append(resultados[4])
+                Error1.append(resultados[5])
         In  = pd.Series(Entrada,name='i1')
         Mot1 = pd.Series(Motor1,name='i2')
         Mot2 = pd.Series(Motor2,name='i3')
         Mot3 = pd.Series(Motor3,name='i4')
         Mot4 = pd.Series(Motor4,name='i5')
+        Error = pd.Series(Error1,name='i6')
 
-        m =pd.concat([Tiempo,In,Mot1,Mot2,Mot3,Mot4],axis=1)
+        m =pd.concat([Tiempo,In,Mot1,Mot2,Mot3,Mot4,Error],axis=1)
         m.to_csv('datos_1_suelo_adelante_1060.txt',header=True,index=False)
         print('termino')
 
@@ -50,11 +53,6 @@ if __name__ == "__main__":
                         guardar()
                         ser.close()
                         break
-                elif(datos.decode('cp1250').replace('\n','')=='C'):
-                        time.sleep(2)
-                        ser.write(('d').encode('cp1250'))
-                        input(' Pulse cualquier tecla para continuar ')
-                        ser.write(('c').encode('cp1250'))
                 else:
                         datosID.append(datos.decode('cp1250').replace('\n',''))
                         tiempo.append(times)
