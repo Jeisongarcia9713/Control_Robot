@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 
-datos=pd.read_csv('control_5_suelo_adelante_1060.txt',header=0)
+datos=pd.read_csv('con_2_mismoSentido_gan_60.txt',header=0)
 tiempo=datos['t']
 entrada=datos['i1']
 motor1=datos['i2']
@@ -20,9 +20,14 @@ ax.set(xlabel='time (s)', ylabel='voltage (mV)',
 ax.grid()
 plt.hold(True);
 ax.plot(tiempo, motor1)
-#ax.plot(tiempo, motor2)
-#ax.plot(tiempo, motor3)
-#ax.plot(tiempo, motor4)
-ax.plot(tiempo, control/4)
-
+ax.plot(tiempo, motor2)
+ax.plot(tiempo, motor3)
+ax.plot(tiempo, motor4)
+#ax.plot(tiempo, control)
+ax.legend(['entrada','motor1','motor2','motor3','motor4','control'])
 plt.show()
+
+print(np.mean(motor1))
+print(np.mean(motor2))
+print(np.mean(motor3))
+print(np.mean(motor4))

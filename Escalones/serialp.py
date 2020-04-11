@@ -29,7 +29,7 @@ def guardar():
         Error = pd.Series(Error1,name='i6')
 
         m =pd.concat([Tiempo,In,Mot1,Mot2,Mot3,Mot4,Error],axis=1)
-        m.to_csv('control_5_suelo_adelante_1060.txt',header=True,index=False)
+        m.to_csv('con_2_mismoSentido_gan_60.txt',header=True,index=False)
         print('termino')
 
 if __name__ == "__main__":
