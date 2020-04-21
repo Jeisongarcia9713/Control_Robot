@@ -5,31 +5,39 @@ import numpy as np
 import pandas as pd
 
 def guardar():  
-        Tiempo  = pd.Series(tiempo,name='t')
-        Entrada=[]
+        VL=[]
+        VR=[]
         Motor1=[]
         Motor2=[]
         Motor3=[]
         Motor4=[]
-        Error1=[]
+        W=[]
+        theta=[]
+        
         for i in datosID:
                 resultados=i.split(",")
                 #print(resultados)
-                Entrada.append(resultados[0])
-                Motor1.append(resultados[1])
-                Motor2.append(resultados[2])
-                Motor3.append(resultados[3])
-                Motor4.append(resultados[4])
-                Error1.append(resultados[5])
-        In  = pd.Series(Entrada,name='i1')
-        Mot1 = pd.Series(Motor1,name='i2')
-        Mot2 = pd.Series(Motor2,name='i3')
-        Mot3 = pd.Series(Motor3,name='i4')
-        Mot4 = pd.Series(Motor4,name='i5')
-        Error = pd.Series(Error1,name='i6')
+                VR.append(resultados[0])
+                VL.append(resultados[1])
+                Motor1.append(resultados[2])
+                Motor2.append(resultados[3])
+                Motor3.append(resultados[4])
+                Motor4.append(resultados[5])
+                W.append(resultados[6])
+                theta.append(resultados[7])
+                
+        Tiempo  = pd.Series(tiempo,name='t')        
+        In   = pd.Series(VR,name='i1')
+        In1  = pd.Series(VL,name='i2')
+        Mot1 = pd.Series(Motor1,name='i3')
+        Mot2 = pd.Series(Motor2,name='i4')
+        Mot3 = pd.Series(Motor3,name='i5')
+        Mot4 = pd.Series(Motor4,name='i6')
+        Vangular = pd.Series(W,name='i7')
+        angulo = pd.Series(theta,name='i8')
 
-        m =pd.concat([Tiempo,In,Mot1,Mot2,Mot3,Mot4,Error],axis=1)
-        m.to_csv('con_2_mismoSentido_gan_60.txt',header=True,index=False)
+        m =pd.concat([Tiempo,In,In1,Mot1,Mot2,Mot3,Mot4,Vangular,angulo],axis=1)
+        m.to_csv('linea_recta3.txt',header=True,index=False)
         print('termino')
 
 if __name__ == "__main__":

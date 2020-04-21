@@ -4,27 +4,30 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 
-datos=pd.read_csv('con_2_mismoSentido_gan_60.txt',header=0)
+datos=pd.read_csv('linea_recta3.txt',header=0)
 tiempo=datos['t']
-entrada=datos['i1']
-motor1=datos['i2']
-motor2=datos['i3']
-motor3=datos['i4']
-motor4=datos['i5']
-control=datos['i6']
+VL=datos['i1']/60
+VR=datos['i2']/60
+motor1=datos['i3']/60
+motor2=datos['i4']/60
+motor3=datos['i5']/60
+motor4=datos['i6']/60
+W=datos['i7']
+Angulo=datos['i8']
 fig, ax = plt.subplots()
-ax.plot(tiempo, entrada)
+ax.plot(tiempo, VR)
 
 ax.set(xlabel='time (s)', ylabel='voltage (mV)',
        title='About as simple as it gets, folks')
 ax.grid()
 plt.hold(True);
+ax.plot(tiempo, VL)
 ax.plot(tiempo, motor1)
 ax.plot(tiempo, motor2)
 ax.plot(tiempo, motor3)
 ax.plot(tiempo, motor4)
-#ax.plot(tiempo, control)
-ax.legend(['entrada','motor1','motor2','motor3','motor4','control'])
+ax.plot(tiempo, W)
+ax.legend(['VR','VL','motor1','motor2','motor3','motor4','W'])
 plt.show()
 
 print(np.mean(motor1))
