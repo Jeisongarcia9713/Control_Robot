@@ -37,7 +37,7 @@ def guardar():
         angulo = pd.Series(theta,name='i8')
 
         m =pd.concat([Tiempo,In,In1,Mot1,Mot2,Mot3,Mot4,Vangular,angulo],axis=1)
-        m.to_csv('linea_recta3.txt',header=True,index=False)
+        m.to_csv('VelocidadAngular4.txt',header=True,index=False)
         print('termino')
 
 if __name__ == "__main__":

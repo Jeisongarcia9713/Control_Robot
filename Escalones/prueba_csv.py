@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 
-datos=pd.read_csv('linea_recta3.txt',header=0)
+datos=pd.read_csv('VelocidadAngular4.txt',header=0)
 tiempo=datos['t']
 VL=datos['i1']/60
 VR=datos['i2']/60
@@ -34,3 +34,4 @@ print(np.mean(motor1))
 print(np.mean(motor2))
 print(np.mean(motor3))
 print(np.mean(motor4))
+print(np.mean(W))
